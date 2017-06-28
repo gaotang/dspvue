@@ -1,3 +1,2 @@
-export { default as consultApi } from './consult-api'
-export { default as goodsApi } from './goods-api'
-export { default as telReadReportApi } from './telreadreport-api'
+export { goodsApi, consultApi } from './consult-api'
+export { telReadReportApi } from './rptservice-api'

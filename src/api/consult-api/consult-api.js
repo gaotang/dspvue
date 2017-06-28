@@ -25,14 +25,14 @@ export default {
    * 1. 获取用户咨询记录
    * @param { customId: number, lastId: number }
    */
-  getConsults ({ customId, lastId = 0 }) {
+  getConsults({ customId, lastId = 0 }) {
     return ajax.get(`HealthConsult/Records/${customId}/${lastId}`).then(convertConsults)
   },
   /**
    * 2. 发送聊天记录
    * @param { ReplyContent: string }
    */
-  sendMessage (params) {
+  sendMessage(params) {
     return ajax.post(`HealthConsult/AddDoctorReply`, params)
   }
 }

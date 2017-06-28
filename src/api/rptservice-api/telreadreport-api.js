@@ -8,7 +8,7 @@ export default {
    * 获取 推送报告解读用户数据列表
    * @param { PageState（请求的页面类型）：1、外呼执行；2、待联系执行；3、已经联系记录 } params
    */
-  telReadReportUserInfos (params) {
+  telReadReportUserInfos(params) {
     return ajax.post(`TelReadReport/TelReadReportUserInfos`, params)
   },
   /**
@@ -16,7 +16,7 @@ export default {
    * @param {客户编号} customerId
    * @param { [{ CheckUnitCode: '', WorkNo: '' }]} params
    */
-  getHealthReport (customerId, params) {
+  getHealthReport(customerId, params) {
     return ajax.post(`Common/GetHealthReports?intCustomerId=${customerId}`, params)
   },
   /**
@@ -25,7 +25,7 @@ export default {
    * @param {健管师编号} doctorId
    * @param {健管师名称} doctorName
    */
-  setTelServiceDoctor (orderNo, doctorId, doctorName) {
+  setTelServiceDoctor(orderNo, doctorId, doctorName) {
     return ajax.post(`TelReadReport/SetTelServiceDoctor?orderNo=${orderNo}&DoctorId=${doctorId}&DoctorName=${doctorName}`)
   },
   /**
@@ -34,7 +34,7 @@ export default {
    * @param { 1待联系；2客户忙待联系；3、已联系；4、健管师已经认领（不用）} state
    * @param {健管师编号} doctorId
    */
-  setTelServiceState (orderNo, state, doctorId) {
+  setTelServiceState(orderNo, state, doctorId) {
     return ajax.post(`TelReadReport/SetTelServiceState?orderNo=${orderNo}&State=${state}&DoctorId=${doctorId}`)
   },
   /**
@@ -42,7 +42,7 @@ export default {
    * @param {健管师编号} doctorId
    * @param {订单号} orderNo
    */
-  call (doctorId, orderNo) {
+  call(doctorId, orderNo) {
     return ajax.post(`TelReadReport/Call?DoctorID=${doctorId}&OrderNo=${orderNo}`)
   },
   /**
@@ -51,28 +51,28 @@ export default {
    * @param {客户编号} accountId
    * @param {备注} remark
    */
-  setTelServiceRemark (orderNo, accountId, remark) {
+  setTelServiceRemark(orderNo, accountId, remark) {
     return ajax.post(`TelReadReport/SetTelServiceRemark?orderNo=${orderNo}&AccountId=${accountId}&Remark=${remark}`)
   },
   /**
    * 保存报告解读总结
    * @param {类型（Type）；1评估报告；2医生建议} params
    */
-  saveTelReportSummarys (params) {
+  saveTelReportSummarys(params) {
     return ajax.post(`TelReadReport/SaveTelReportSummarys`, params)
   },
   /**
    * 客户报告总结（电话解读）
    * @param {客户编号} customerId
    */
-  telReportSummarys (customerId) {
+  telReportSummarys(customerId) {
     return ajax.post(`TelReadReport/TelReportSummarys?CustId=${customerId}`)
   },
   /**
    * 获取呼叫记录列表
    * @param {*} params
    */
-  doctorVoiceCallRecords (params) {
+  doctorVoiceCallRecords(params) {
     return ajax.post(`TelReadReport/DoctorVoiceCallRecords`, params)
   },
   /**
@@ -81,7 +81,7 @@ export default {
    * @param {结束时间} endDate
    * @param {机构编号} deptID
    */
-  setReservationResources (startDate, endDate, deptID) {
+  setReservationResources(startDate, endDate, deptID) {
     return ajax.post(`TelReadReport/SetReservationResources?StartDate=${startDate}&EndDate=${endDate}&DeptID=${deptID}`)
   },
   /**
@@ -90,7 +90,7 @@ export default {
    * @param {结束时间} endDate
    * @param {机构编号} deptID
    */
-  getReservationResources (startDate, endDate, deptID) {
+  getReservationResources(startDate, endDate, deptID) {
     return ajax.get(`TelReadReport/GetReservationResources?StartDate=${startDate}&EndDate=${endDate}&DeptID=${deptID}`)
   },
   /**
@@ -98,7 +98,7 @@ export default {
    * @param {年} year
    * @param {周} week
    */
-  getResourcesCalendarFormat (year, week) {
+  getResourcesCalendarFormat(year, week) {
     return ajax.get(`TelReadReport/GetResourcesCalendarFormat?Year=${year}&Week=${week}`)
   }
 }

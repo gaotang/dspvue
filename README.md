@@ -1,6 +1,8 @@
 # add npm package
 npm i -S axios Base64 crypto-js
+npm i -S iview
 npm i -D es6-promise
+npm i -D less-loader
 
 # dspvue
 
