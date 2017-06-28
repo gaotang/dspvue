@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { signinApi as api } from '@/api'
+import { signinService as service } from '@/services'
 
 export default {
   name: 'signin',
@@ -57,7 +57,7 @@ export default {
         if (valid) {
           const self = this
           const [uid, pwd] = Object.values(this.formInline)
-          api.loginValidate(uid, pwd)
+          service.Login(uid, pwd)
             .then(function (json) {
               self.$caches.isLogin = true
               Object.assign(self.$caches.user, json)

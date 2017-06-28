@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { consultApi as api } from '@/api'
+import { consultService as service } from '@/services'
 
 export default {
   name: 'consult',
@@ -44,17 +44,14 @@ export default {
   },
   mounted () {
     var self = this
-    api.getConsults({
-      customId: 1703133,
-      lastId: 4
-    })
-    .then(function (json) {
-      console.log(json)
-      self.consultList = json
-    })
-    .catch(function (error) {
-      console.log('error:', error)
-    })
+    service.ConsultRecords({ customId: 1703133, lastId: 4 })
+      .then(function (json) {
+        console.log(json)
+        self.consultList = json
+      })
+      .catch(function (error) {
+        console.log('error:', error)
+      })
   },
   methods: {
     onClickA() {
