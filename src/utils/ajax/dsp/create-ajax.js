@@ -38,12 +38,13 @@ instance.interceptors.response.use(function (response) {
     if (response.data.state === 1) {
       return response.data.Data
     } else {
-      console.log(response.data.message)
+      // console.log(response.data.message)
+      return Promise.reject(response.data.message)
     }
   } else {
-    console.log(response.statusText)
+    // console.log(response.statusText)
+    return Promise.reject(response.statusText)
   }
-  return Promise.reject(null)
 }, function (error) {
   // 对返回的错误进行一些处理
   return Promise.reject(error)

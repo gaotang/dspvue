@@ -5,6 +5,7 @@
   "globals": {
     "expect": true,
     "assert": true,
+    "done": true,
     "sinon": true
   }
 }
