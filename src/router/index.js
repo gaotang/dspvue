@@ -1,12 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import { signin } from '@/components/signin'
-// import { consult } from '@/components/consult'
-// import { custom } from '@/components/custom'
-// import { dailywork } from '@/components/dailywork'
-// import { doctorpower } from '@/components/doctorpower'
-// import { rptservice } from '@/components/rptservice'
-Vue.use(Router)
+// import { consult as Consult } from '@/components/consult'
+// import { custom as Custom } from '@/components/custom'
+// import { dailywork as Dailywork } from '@/components/dailywork'
+// import { doctorpower as Doctorpower } from '@/components/doctorpower'
+// import { rptservice as Rptservice } from '@/components/rptservice'
 
 const Consult = resolve => {
   // require.ensure 是 Webpack 的特殊语法，用来设置 code-split point
@@ -35,6 +34,8 @@ const Rptservice = resolve => {
     resolve(require('../components/rptservice/Rptservice.vue'))
   })
 }
+
+Vue.use(Router)
 
 export default new Router({
   routes: [

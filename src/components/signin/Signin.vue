@@ -1,27 +1,29 @@
 <template>
-  <Modal v-model="modal" width="360" :closable="false" :mask-closable="false">
-    <p slot="header" style="color:#f60text-align:center">
-      <Icon type="person"></Icon>
-      <span>登录</span>
-    </p>
-    <div style="text-align:center">
-      <Form ref="formInline" :model="formInline" :rules="ruleInline">
-        <Form-item prop="user">
-          <Input type="text" v-model="formInline.user" placeholder="用户名">
-          <Icon type="ios-person-outline" slot="prepend"></Icon>
-          </Input>
-        </Form-item>
-        <Form-item prop="password">
-          <Input type="password" v-model="formInline.password" placeholder="密码">
-          <Icon type="ios-locked-outline" slot="prepend"></Icon>
-          </Input>
-        </Form-item>
-      </Form>
-    </div>
-    <div slot="footer">
-      <Button type="error" size="large" long :loading="modal_loading" @click="handleSubmit('formInline')">登录</Button>
-    </div>
-  </Modal>
+  <div>
+    <Modal v-model="modal" width="360" :closable="false" :mask-closable="false">
+      <p slot="header" style="color:#f60text-align:center">
+        <Icon type="person"></Icon>
+        <span>登录</span>
+      </p>
+      <div style="text-align:center">
+        <Form ref="formInline" :model="formInline" :rules="ruleInline">
+          <Form-item prop="user">
+            <Input type="text" v-model="formInline.user" placeholder="用户名">
+            <Icon type="ios-person-outline" slot="prepend"></Icon>
+            </Input>
+          </Form-item>
+          <Form-item prop="password">
+            <Input type="password" v-model="formInline.password" placeholder="密码">
+            <Icon type="ios-locked-outline" slot="prepend"></Icon>
+            </Input>
+          </Form-item>
+        </Form>
+      </div>
+      <div slot="footer">
+        <Button type="error" size="large" long :loading="modal_loading" @click="handleSubmit('formInline')">登录</Button>
+      </div>
+    </Modal>
+  </div>
 </template>
 
 <script>
@@ -57,7 +59,8 @@ export default {
           const [uid, pwd] = Object.values(this.formInline)
           api.loginValidate(uid, pwd)
             .then(function (json) {
-              Object.assign(self.caches.user, json)
+              self.$caches.isLogin = true
+              Object.assign(self.$caches.user, json)
               self.modal_loading = false
               self.modal = false
               self.$Message.success('登录成功!')

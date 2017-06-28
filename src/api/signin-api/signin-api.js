@@ -25,7 +25,6 @@ export default {
    * @param { returnCount: 返回'1',需要数据的总条数 } params
    */
   loginValidate(account, password) {
-    convertModels({ id: 1, name: 2 })
     return ajax.get(`Login/LoginValidate?strAccount=${account}&strPassword=${MD5(password)}`).then(convertModels)
   }
 
