@@ -37,6 +37,9 @@ const covert = {
   /**
    * 1.2 转换用户咨询记录 集合
    * @param { Content: string } models
+   *        { 1：“递交” 2:“未递交” } DeliverState
+   *        { 客户咨询 1: “文本”2:“图片” 3:“体检报告” 4:“问卷调查”   健管师回复：0：纯文本： 1：带连接  2：商品推送 } ConsultType
+   *        { 图片地址,体检报告号，问卷调查号 } AppendInfo
    */
   Consults: (models = []) => {
     let result = []

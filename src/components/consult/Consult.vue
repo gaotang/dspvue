@@ -3,59 +3,63 @@
     <Tab-pane :label="label" name="name1">
       <table style="width:100%;">
         <tr>
-          <td style="vertical-align: top; width:20%;">
-            <template v-for="item in customerList">
-              <Card @click.native="OnClickByCustomer(item)">
-                <Row class="user-avator-list">
-                  <Col span="4">
-                  <img :src="item.PhotoUrl">
-                  </Col>
-                  <Col span="20">
-                  <Row>
-                    <Col span="18">
-                    <label>{{ item.Nickname }}({{ item.CustomerName }})</label>
+          <td style="vertical-align: top; width:25%;">
+            <div class="user-list" :style="{ height: customerHeight}">
+              <template v-for="item in customerList">
+                <Card @click.native="OnClickByCustomer(item)">
+                  <Row class="user-avator-list">
+                    <Col span="4">
+                    <img :src="item.PhotoUrl">
                     </Col>
-                    <Col span="6">
-                    <Button type="dashed" size="small" :title="item.DeptName">{{ item.DeptName | subStr }}</Button>
-                    </Col>
-                    <Col span="24">
-                    <label for="CommitOn">{{ item.CommitOn | clearT }}</label>
+                    <Col span="20">
+                    <Row>
+                      <Col span="18">
+                      <label>{{ item.Nickname }}({{ item.CustomerName }})</label>
+                      </Col>
+                      <Col span="6">
+                      <Button type="dashed" size="small" :title="item.DeptName">{{ item.DeptName | subStr }}</Button>
+                      </Col>
+                      <Col span="24">
+                      <label for="CommitOn">{{ item.CommitOn | clearT }}</label>
+                      </Col>
+                    </Row>
                     </Col>
                   </Row>
-                  </Col>
-                </Row>
-              </Card>
-            </template>
+                </Card>
+              </template>
+            </div>
             <div style="margin: 10px 0;">
               <Page :total="customerCount" size="small" @on-change="OnChangeCustomers"></Page>
             </div>
           </td>
-          <td style="vertical-align: top; width:50%;">
-            <Card>
-              <p class="userinfo">
-                <label for="username">{{ customer.CustomerName }}</label>
-                <label for="moblie">{{ customer.Mobile }}</label>
-                <label for="sex">{{ gender }}</label>
-                <label for="sex">{{ age }}</label>
-                <Button type="success" size="small" icon="ios-paperplane">转交</Button>
-              </p>
-            </Card>
-            <template v-for="item in consultList">
-              <Card v-if="item.IsDoctorReply == 0">
-                <p slot="title" class="user-avator">
-                  <img :src="item.PhotoUrl">
-                  <label>{{item.CommitOn | clearT }}</label>
+          <td style="vertical-align: top; width:45%;">
+            <div class="user-list" :style="{ height: contentHeight }">
+              <Card>
+                <p class="userinfo">
+                  <label for="username">{{ customer.CustomerName }}</label>
+                  <label for="moblie">{{ customer.Mobile }}</label>
+                  <label for="sex">{{ gender }}</label>
+                  <label for="sex">{{ age }}</label>
+                  <Button type="success" size="small" icon="ios-paperplane">转交</Button>
                 </p>
-                <p class="user-content" v-html="item.Content"></p>
               </Card>
-              <Card v-if="item.IsDoctorReply == 1">
-                <p slot="title" class="doctor-avator">
-                  <label>{{item.CommitOn | clearT }}</label>
-                  <img :src="item.PhotoUrl">
-                </p>
-                <p class="doctor-content" v-html="item.Content"></p>
-              </Card>
-            </template>
+              <template v-for="item in consultList">
+                <Card v-if="item.IsDoctorReply == 0">
+                  <p slot="title" class="user-avator">
+                    <img :src="item.PhotoUrl">
+                    <label>{{item.CommitOn | clearT }}</label>
+                  </p>
+                  <p class="user-content" v-html="item.Content"></p>
+                </Card>
+                <Card v-if="item.IsDoctorReply == 1">
+                  <p slot="title" class="doctor-avator">
+                    <label>{{item.CommitOn | clearT }}</label>
+                    <img :src="item.PhotoUrl">
+                  </p>
+                  <p class="doctor-content" v-html="item.Content"></p>
+                </Card>
+              </template>
+            </div>
           </td>
           <td style="vertical-alignalign: top; width:30%;">
             <div>
@@ -88,6 +92,8 @@ export default {
   name: 'consult',
   data() {
     return {
+      customerHeight: '700px',
+      contentHeight: '700px',
       label: (h) => {
         return h('div', [
           h('Icon', {
@@ -120,7 +126,6 @@ export default {
   },
   computed: {
     age() {
-      console.log(this.customer.Birthday)
       if (this.customer.Birthday) {
         const [nowYear, birYear] = [new Date().getFullYear(), this.customer.Birthday.substring(0, 4)]
         return `${nowYear - birYear}岁`
@@ -133,9 +138,42 @@ export default {
       return ''
     }
   },
+  watch: {
+    customerCount (val) {
+      this.label = (h) => {
+        return h('div', [
+          h('Icon', {
+            props: {
+              type: 'chatbubble-working'
+            }
+          }),
+          h('span', '待处理'),
+          h('Badge', {
+            props: {
+              count: val
+            }
+          })
+        ])
+      }
+    }
+  },
   mounted() {
+    let contentHeight = document.body.scrollHeight
+    const [navHeight, subNavHeight, pageHeight, footerHeight, otherHeight] = [60, 50, 44, 78, 40]
+    console.log(`contentHeight:${contentHeight - navHeight - subNavHeight - pageHeight - footerHeight - otherHeight}`)
+    this.customerHeight = `${contentHeight - navHeight - subNavHeight - pageHeight - otherHeight}px`
+    this.contentHeight = `${contentHeight - navHeight - subNavHeight - otherHeight}px`
+
     this.OnClickByGetCustomers()
   },
+  // updated() {
+  //   console.log('updated:')
+  //   console.log(window.screen.availHeight)
+  //   console.log(window.screen.height)
+  //   console.log(document.body.offsetHeight)
+  //   console.log(document.body.clientHeight)
+  //   console.log(document.body.scrollHeight)
+  // },
   methods: {
     OnClickByGetCustomers(skip = 0, take = 10, flag = 3) {
       const self = this
@@ -187,6 +225,10 @@ export default {
 
 .userinfo label {
   padding: 0 5px;
+}
+
+.user-list {
+  overflow: auto;
 }
 
 .user-avator-list {

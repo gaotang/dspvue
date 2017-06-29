@@ -53,29 +53,27 @@
 </style>
 <template>
     <div class="layout">
-        <Affix>
-          <Menu mode="horizontal" theme="dark" active-name="1">
-            <div class="layout-logo"></div>
-            <div class="layout-nav">
-                <Menu-item name="1">
-                    <Icon type="chatbubbles"></Icon>
-                    <router-link to="/consult">咨询管理</router-link>
-                </Menu-item>
-                <Menu-item name="2">
-                    <Icon type="gear-a"></Icon>
-                    <router-link to="/dailywork">服务管理</router-link>
-                </Menu-item>
-                <Menu-item name="3">
-                    <Icon type="ios-telephone"></Icon>
-                    <router-link to="/rptservice">报告深度解读</router-link>
-                </Menu-item>
-                <Menu-item name="4">
-                    <Icon type="ios-people"></Icon>
-                    <router-link to="/doctorpower">竟争力周报</router-link>
-                </Menu-item>
-            </div>
-          </Menu>
-        </Affix>
+        <Menu mode="horizontal" theme="dark" active-name="1">
+          <div class="layout-logo"></div>
+          <div class="layout-nav">
+              <Menu-item name="1">
+                  <Icon type="chatbubbles"></Icon>
+                  <router-link to="/consult">咨询管理</router-link>
+              </Menu-item>
+              <Menu-item name="2">
+                  <Icon type="gear-a"></Icon>
+                  <router-link to="/dailywork">服务管理</router-link>
+              </Menu-item>
+              <Menu-item name="3">
+                  <Icon type="ios-telephone"></Icon>
+                  <router-link to="/rptservice">报告深度解读</router-link>
+              </Menu-item>
+              <Menu-item name="4">
+                  <Icon type="ios-people"></Icon>
+                  <router-link to="/doctorpower">竟争力周报</router-link>
+              </Menu-item>
+          </div>
+        </Menu>
         <!--<Menu mode="horizontal" active-name="1">
             <div class="layout-assistant">
                 <Menu-item name="1">二级导航</Menu-item>
@@ -93,9 +91,9 @@
         <div id="app" class="layout-content">
             <router-view></router-view>
         </div>
-        <div class="layout-copy">
+        <!--<div class="layout-copy">
             2011-2017 &copy; 上海好卓数据服务有限公司
-        </div>
+        </div>-->
     </div>
 </template>
 
