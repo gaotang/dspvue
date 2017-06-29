@@ -24,7 +24,7 @@ describe('测试DSP咨询接口', () => {
     const [doctorId, skip, take, flag] = [8250, 0, 20, 3]
     return api.pendingData(doctorId, skip, take, flag)
       .then(function (json) {
-        console.log('测试pendingData方法：', json)
+        // console.log('测试pendingData方法：', json)
         expect(json).to.be.an('object')
       })
       .catch(function (error) {

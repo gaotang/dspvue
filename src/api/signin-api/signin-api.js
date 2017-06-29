@@ -4,18 +4,23 @@
 import { MD5 } from 'crypto-js'
 import { dspAjax as ajax } from '@/utils/ajax'
 
-const convertModels = (model) => {
-  return {
-    account: model.Account,
-    doctorId: model.Doctor_ID,
-    userName: model.Name,
-    userAvator: model.PhotoUrl,
-    deptId: model.Dept,
-    deptCode: model.DeptCode,
-    deptName: model.deptName,
-    position: model.Position,
-    serviceType: model.ServiceType,
-    serviceLimit: model.ServiceLimit
+const convert = {
+  /**
+   * 1.1 转换 健管师信息
+   */
+  UserInfo: (model) => {
+    return {
+      account: model.Account,
+      doctorId: model.Doctor_ID,
+      userName: model.Name,
+      userAvator: model.PhotoUrl,
+      deptId: model.Dept,
+      deptCode: model.DeptCode,
+      deptName: model.deptName,
+      position: model.Position,
+      serviceType: model.ServiceType,
+      serviceLimit: model.ServiceLimit
+    }
   }
 }
 
@@ -26,7 +31,7 @@ export default {
    * @param {密码} password
    */
   loginValidate(account, password) {
-    return ajax.get(`Login/LoginValidate?strAccount=${account}&strPassword=${MD5(password)}`).then(convertModels)
+    return ajax.get(`Login/LoginValidate?strAccount=${account}&strPassword=${MD5(password)}`).then(convert.UserInfo)
   },
   /**
    * 修改用户密码

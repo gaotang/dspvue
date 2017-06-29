@@ -10,7 +10,7 @@ describe('测试DSP咨询接口', () => {
     const [uid, pwd] = ['yuanwentao001', '111111']
     return api.loginValidate(uid, pwd)
     .then(function (json) {
-      console.log('loginValidate:', json)
+      // console.log('loginValidate:', json)
       expect(json).to.be.an('object')
       done()
     })

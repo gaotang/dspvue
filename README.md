@@ -37,4 +37,5 @@ npm test
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-[Vue.js实现用户登录退出和e2e测试](https://segmentfault.com/a/1190000009756158)
+- [Vue.js实现用户登录退出和e2e测试](https://segmentfault.com/a/1190000009756158)
+- [web 前端 @ 功能 JS 实现分析及其原理](https://segmentfault.com/a/1190000007846897)
