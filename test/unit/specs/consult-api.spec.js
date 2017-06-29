@@ -20,6 +20,18 @@ describe('测试DSP咨询接口', () => {
     })
   })
 
+  it('测试pendingData方法：', () => {
+    const [doctorId, skip, take, flag] = [8250, 0, 20, 3]
+    return api.pendingData(doctorId, skip, take, flag)
+      .then(function (json) {
+        console.log('测试pendingData方法：', json)
+        expect(json).to.be.an('object')
+      })
+      .catch(function (error) {
+        console.log('error:', error)
+      })
+  })
+
   // it('测试sendMessage方法：', () => {
   //   const params = {
   //     ReDoctorId: 7228,

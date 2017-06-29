@@ -4,27 +4,29 @@ export default {
   /**
    * 获取 客户信息
    */
-  Custom: () => {},
+  Custom: () => {
+    return goodsApi
+  },
   /**
    * 获取 客户报告
    */
-  Report: () => {},
+  Report: () => { },
   /**
    * 获取 客户问卷
    */
-  Questionnaire: () => {},
+  Questionnaire: () => { },
   /**
    * 转交 客户给其他健管师
    */
-  TurnOver: () => {},
+  TurnOver: () => { },
   /**
    * 获取 常用短语
    */
-  UsefulExpressions: () => {},
+  UsefulExpressions: () => { },
   /**
    * 获取 客户列表
    */
-  Customs: () => {},
+  Customs: consultApi.pendingData,
   /**
    * 获取 客户咨询记录
    */
@@ -32,5 +34,5 @@ export default {
   /**
    * 发送 健管师聊天记录
    */
-  SendMessage: () => {}
+  SendMessage: consultApi.sendMessage
 }

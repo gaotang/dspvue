@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import gt from './install'
 import iView from 'iview'
+import './filters'
 import 'iview/dist/styles/iview.css'    // 使用 CSS
 
 Vue.config.productionTip = false

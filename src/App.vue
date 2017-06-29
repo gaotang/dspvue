@@ -53,7 +53,8 @@
 </style>
 <template>
     <div class="layout">
-        <Menu mode="horizontal" theme="dark" active-name="1">
+        <Affix>
+          <Menu mode="horizontal" theme="dark" active-name="1">
             <div class="layout-logo"></div>
             <div class="layout-nav">
                 <Menu-item name="1">
@@ -73,7 +74,8 @@
                     <router-link to="/doctorpower">竟争力周报</router-link>
                 </Menu-item>
             </div>
-        </Menu>
+          </Menu>
+        </Affix>
         <!--<Menu mode="horizontal" active-name="1">
             <div class="layout-assistant">
                 <Menu-item name="1">二级导航</Menu-item>

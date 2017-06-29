@@ -12,3 +12,13 @@ Vue.filter('clearT', function (value = '') {
   }
   return value
 })
+
+/**
+ * 分割字符串
+ */
+Vue.filter('subStr', function (value = '', length = 4) {
+  if (value) {
+    value = value.substring(0, length)
+  }
+  return value
+})

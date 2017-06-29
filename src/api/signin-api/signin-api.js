@@ -1,5 +1,5 @@
 /**
- * @file api 商品推送
+ * @file api 健管师登录逻辑
  */
 import { MD5 } from 'crypto-js'
 import { dspAjax as ajax } from '@/utils/ajax'
@@ -22,10 +22,19 @@ const convertModels = (model) => {
 export default {
   /**
    * 登录验证
-   * @param { returnCount: 返回'1',需要数据的总条数 } params
+   * @param {健管师帐号} account
+   * @param {密码} password
    */
   loginValidate(account, password) {
     return ajax.get(`Login/LoginValidate?strAccount=${account}&strPassword=${MD5(password)}`).then(convertModels)
+  },
+  /**
+   * 修改用户密码
+   * @param {健管师帐号} account
+   * @param {新密码} newPassword
+   */
+  modifyPassword(account, newPassword) {
+    return ajax.get(`Login/ChangePassword?account=${account}&newPassword=${newPassword}`)
   }
 
 }
