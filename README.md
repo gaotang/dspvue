@@ -1,9 +1,7 @@
 # add npm package
 ```
-npm i -S axios Base64 crypto-js
-npm i -S iview
+npm i -S axios Base64 crypto-js iview
 npm i -D es6-promise
-npm i -D less-loader
 ```
 
 # dspvue
@@ -39,3 +37,4 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 - [Vue.js实现用户登录退出和e2e测试](https://segmentfault.com/a/1190000009756158)
 - [web 前端 @ 功能 JS 实现分析及其原理](https://segmentfault.com/a/1190000007846897)
+- [vue开源项目库汇总](https://segmentfault.com/p/1210000008583242/read?from=timeline)
